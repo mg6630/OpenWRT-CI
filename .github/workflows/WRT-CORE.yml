@@ -169,6 +169,13 @@ jobs:
         run: |
           cd ./wrt/
 
+          # 若仓库提供自定义 feed 配置，则覆盖源码默认的 feeds.conf.default
+          if [ -f "$GITHUB_WORKSPACE/Config/feeds.conf.default.txt" ]; then
+            cp -f "$GITHUB_WORKSPACE/Config/feeds.conf.default.txt" ./feeds.conf.default
+            echo "Custom feeds.conf.default applied:"
+            cat ./feeds.conf.default
+          fi
+
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
