@@ -4,9 +4,9 @@
 name: Auto-Clean
 
 on:
-  #自动清理：每天早上5点
-  schedule:
-    - cron: 21 21 * * *
+  #已取消每天定时清理：避免每天5点自动触发官方配置编译，并避免删除自定义 Release
+  #schedule:
+  #  - cron: 21 21 * * *
   #手动清理
   workflow_dispatch:
 
